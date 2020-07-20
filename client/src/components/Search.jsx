@@ -6,24 +6,45 @@ class Search extends React.Component {
     this.state = {
       term: ''
     }
+
+    this.onChange = this.onChange.bind(this);
+    this.search = this.search.bind(this);
+
   }
 
-  onChange (e) {
+  onChange (event) {
     this.setState({
-      term: e.target.value
+      term: event.target.value
     });
   }
 
   search() {
-    this.props.onSearch(this.state.term);
+    const gitHubUserName = this.state.term;
+    event.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '/repos',
+      data: gitHubUserName
+    })
+
+
+//    this.props.onSearch(this.state.term);
   }
 
   render() {
-    return (<div>
+    return (
+    <div>
       <h4>Add more repos!</h4>
-      Enter a github username: <input value={this.state.terms} onChange={this.onChange}/>       
+      <form search={this.search}>
+      <label>
+
+      Enter a github username: <input value={this.state.term} onChange={this.onChange}/>
       <button onClick={this.search}> Add Repos </button>
-    </div>) 
+
+      </label>
+      </form>
+    </div>
+    )
   }
 }
 
