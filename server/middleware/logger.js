@@ -1,6 +1,5 @@
 const logger = function(req, res, next) {
   console.log(req.method, '---->', req.url);
-  console.log('BODY****', req.body);
 
   //get property
   const getProperty = function() {
@@ -10,7 +9,7 @@ const logger = function(req, res, next) {
   }
 
   req.body.userName = getProperty();
-  console.log('body.username', req.body.userName);
+  console.log('body.userName', req.body.userName);
 
   next()
 }
