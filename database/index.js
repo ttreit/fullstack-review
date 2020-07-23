@@ -11,16 +11,24 @@ let repoSchema = mongoose.Schema({
 let Repo = mongoose.model('Repo', repoSchema);
 
 let save = (record) => {
-  const repo = new Repo ({
-    userName = record.userName,
-    repoName = record.repoName,
-    stars = record.stargazing,
-    linkToRepo = record.link
-  })
+  if (record !== undefined) {
+    const repo = new Repo ({
+      userName: record.userName,
+      repoName: record.repoName,
+      stars: record.stargazing,
+      linkToRepo: record.link
+    });
 
-  repo.save(err, repo) {
-    if (err) return console.error(err);
+    repo.save(function(err, repo) {
+      if (err) return console.error(err);
+    })
   }
 }
 
-module.exports.save = save;
+  module.exports.save = save;
+
+
+    // repo.save(function (err, repo) {
+    //   if (err) return console.error(err);
+    // }
+    // })
