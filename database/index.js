@@ -13,7 +13,7 @@ let Repo = mongoose.model('Repo', repoSchema);
 let save = (record) => {
   if (record !== undefined) {
     const repo = new Repo ({
-      userName: record.userName,
+      userName: record.user,
       repoName: record.repoName,
       stars: record.stars,
       linkToRepo: record.linkToRepo
@@ -21,11 +21,15 @@ let save = (record) => {
 
     repo.save(function(err, repo) {
       if (err) return console.error(err);
-    })
+    });
+    console.log('***SAVE***', repo);
   }
 }
 
   module.exports.save = save;
+
+
+//if more than one function module.exports.functionName (ex: module.exports.save)
 
 
     // repo.save(function (err, repo) {
