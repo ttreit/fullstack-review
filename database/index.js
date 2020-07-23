@@ -15,8 +15,8 @@ let save = (record) => {
     const repo = new Repo ({
       userName: record.userName,
       repoName: record.repoName,
-      stars: record.stargazing,
-      linkToRepo: record.link
+      stars: record.stars,
+      linkToRepo: record.linkToRepo
     });
 
     repo.save(function(err, repo) {
